@@ -1,12 +1,9 @@
-def reflect_triangle_type(triangle_type)
-  type = {
-           equilateral_triangle:   'Треугольник равнобедренный и равносторонний',
-           isosceles_triangle:     'Треугольник равнобедренный',
-           rectangle_triangle:     'Треугольник прмоугольный',
-           not_right_triangle:     'Треугольник не прмоугольный'
-         }
-  puts type[triangle_type]
-end
+TRIANGLE_TYPE_MESSAGES = {
+                           equilateral_triangle: 'Треугольник равнобедренный и равносторонний',
+                           isosceles_triangle:   'Треугольник равнобедренный',
+                           rectangle_triangle:   'Треугольник прямоугольный',
+                           not_right_triangle:   'Треугольник не прямоугольный'
+                         }
 
 def pythagorean_theorem(sides)
   gip = sides.delete(sides.max)
@@ -27,17 +24,17 @@ sides << gets.chomp.to_f
 rep = sides.uniq.length
 
 if rep == 1
-  reflect_triangle_type(:equilateral_triangle)
+  p TRIANGLE_TYPE_MESSAGES[:equilateral_triangle]
 elsif rep == 2
-  reflect_triangle_type(:isosceles_triangle)
+  p TRIANGLE_TYPE_MESSAGES[:isosceles_triangle]
   if pythagorean_theorem(sides)
-    reflect_triangle_type(:rectangle_triangle)
+    p TRIANGLE_TYPE_MESSAGES[:rectangle_triangle]
   end
 else
   if pythagorean_theorem(sides)
-    reflect_triangle_type(:rectangle_triangle) 
+    p TRIANGLE_TYPE_MESSAGES[:rectangle_triangle]
   else 
-    reflect_triangle_type(:not_right_triangle)
+    p TRIANGLE_TYPE_MESSAGES[:not_right_triangle]
   end 
 end
 
