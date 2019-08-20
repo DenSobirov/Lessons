@@ -6,12 +6,13 @@
 # Output: "<name>, your weight is ideal"
 
 puts 'Hello, what is your name?'
-name = gets.chomp.capitalize!
+name = gets.chomp.capitalize
 puts 'And now type your growth'
 growth = gets.chomp
 
-if (growth.to_i - 110).negative?
-  p "#{name}, your weight is ideal"
+ideal_weight = growth.to_f - 110
+if ideal_weight.negative?
+  puts "#{name}, your weight is ideal"
 else
-  p "#{name}, your weight is not ideal"
+  puts "#{name}, your ideal weight #{ideal_weight}"
 end
