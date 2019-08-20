@@ -12,14 +12,14 @@ b = gets.chomp.to_f
 print 'put c: '
 c = gets.chomp.to_f
 
-D = b**2 - 4 * a * c
-if D.negative?
-  puts "D = #{D}, there are no roots of the equation"
-elsif D.zero?
+d = b**2 - 4 * a * c
+if d.negative?
+  puts "D = #{d}, there are no roots of the equation"
+elsif d.zero?
   x = -b / (2 * a)
-  puts "D = #{D}, root of the equation is #{x}"
+  puts "D = #{d}, root of the equation is #{x}"
 else
-  x1 = (-b + Math.sqrt(D)) / (2 * a)
-  x2 = (-b - Math.sqrt(D)) / (2 * a)
-  puts "D = #{D}, x1 = #{x1}, x2 = #{x2}"
+  x1 = (-b + Math.sqrt(d)) / (2 * a)
+  x2 = (-b - Math.sqrt(d)) / (2 * a)
+  puts "D = #{d}, x1 = #{x1}, x2 = #{x2}"
 end
