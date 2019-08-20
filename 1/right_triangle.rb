@@ -12,11 +12,22 @@ TRIANGLE_TYPE_MESSAGES = {
   not_right_triangle: 'The triangle is not rectangular'
 }.freeze
 
-def pythagorean_theorem(sides)
-  gip = sides.delete(sides.max)
-  k = sides[0]**2 + sides[1]**2
-  g = gip**2
-  k == g
+def pythagorean_theo(sides)
+  hypotenuse = sides.delete(sides.max)
+  hypotenuse**2 == sides[0]**2 + sides[1]**2 if sides.length != 1
+end
+
+def find_type_of_triangle(sides, rep)
+  if rep == 1
+    puts TRIANGLE_TYPE_MESSAGES[:equilateral_triangle]
+  elsif rep == 2
+    puts TRIANGLE_TYPE_MESSAGES[:isosceles_triangle]
+    puts TRIANGLE_TYPE_MESSAGES[:rectangle_triangle] if pythagorean_theo(sides)
+  elsif pythagorean_theo(sides)
+    puts TRIANGLE_TYPE_MESSAGES[:rectangle_triangle]
+  else
+    puts TRIANGLE_TYPE_MESSAGES[:not_right_triangle]
+  end
 end
 
 sides = []
@@ -30,13 +41,8 @@ sides << gets.chomp.to_f
 
 rep = sides.uniq.length
 
-if rep == 1
-  p TRIANGLE_TYPE_MESSAGES[:equilateral_triangle]
-elsif rep == 2
-  p TRIANGLE_TYPE_MESSAGES[:isosceles_triangle]
-  p TRIANGLE_TYPE_MESSAGES[:rectangle_triangle] if pythagorean_theorem(sides)
-elsif pythagorean_theorem(sides)
-  p TRIANGLE_TYPE_MESSAGES[:rectangle_triangle]
+if sides.select(&:negative?).any?
+  puts 'You enter the negative side, try again'
 else
-  p TRIANGLE_TYPE_MESSAGES[:not_right_triangle]
+  find_type_of_triangle(sides, rep)
 end
