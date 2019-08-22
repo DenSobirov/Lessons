@@ -19,10 +19,6 @@ days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 days[1] = 29 if year_is_leap?(year)
 
-days.each_with_index do |mdays, index|
-  break if month == index + 1
-
-  day += mdays
-end
+(month - 1).times { |m| day += days[m] }
 
 puts "Order number of day #{day}"
