@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 
-# Fill the array with Fibonacci numbers up to 10.
+# Fill the array with Fibonacci numbers up to 100.
 
-fibonacci = []
-loop do
-  if fibonacci.count < 2
-    fibonacci << 1
-  else
-    number = fibonacci[-1] + fibonacci[-2]
-    number > 100 ? break : fibonacci << number
-  end
-end
+fibonacci = [1, 1]
 
-p fibonacci
+fibonacci << fibonacci[-2..-1].sum while fibonacci[-2..-1].sum <= 100
+
+puts fibonacci
