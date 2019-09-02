@@ -10,6 +10,12 @@
 # and display total sum of each unit.
 # 2. Calculate and display total sum of all units.
 
+def negative_values?(goods)
+  values = []
+  goods.values.each { |name| values << name.values }
+  values.flatten.select(&:negative?).any?
+end
+
 goods = {}
 loop do
   puts 'Enter the name of unit:'
@@ -24,9 +30,13 @@ loop do
   goods[name] = { cost: cost, count: count }
 end
 
-a = goods.inject(0) do |total, (name, (att))|
-  p "item: #{name}, cost: #{att[:cost] * att[:count]}"
-  total + (att[:cost] * att[:count])
+if negative_values?(goods)
+  puts 'You entered negative values, try again.'
+else
+  a = goods.inject(0) do |total, (_name, (att))|
+    puts "cost: #{att[:cost] * att[:count]}$"
+    total + (att[:cost] * att[:count])
+  end
+  puts "total: #{a}$"
+  puts goods
 end
-p "total: #{a}$"
-p goods
