@@ -6,4 +6,4 @@ fibonacci = [1, 1]
 
 fibonacci << fibonacci[-2..-1].sum while fibonacci[-2..-1].sum <= 100
 
-puts fibonacci
+p fibonacci
