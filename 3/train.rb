@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# class Trains
 class Train
   attr_accessor :speed
   attr_reader :coach_count

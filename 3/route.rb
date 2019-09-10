@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# class Route
 class Route
   def initialize(initial_station, end_station)
     @initial_station = initial_station
